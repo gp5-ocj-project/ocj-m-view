@@ -1,0 +1,8 @@
+{
+    "/api/users/issignin": "/issignin",
+    "/api/users/signup": "/signup",
+    "/api/users/signin": "/signin",
+    "/api/users/getcheckcode": "/checkcode",
+    "/api/goods/detail": "/detail"
+}
+  

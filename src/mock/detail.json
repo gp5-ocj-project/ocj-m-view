@@ -1,0 +1,53 @@
+{
+    "ret": true,
+    "errcode":"",
+    "errmsg": "数据获取成功",
+    "success": true,
+    "goodsId":123456,
+    "goodsName":"电饭锅",
+    "data": {
+      	"bannerImg":["http://cdnimg.ocj.com.cn/item_images/item/15/17/2698/15172698L4.jpg",
+      	"http://cdnimg.ocj.com.cn/item_images/item/15/17/2698/15172698L4.jpg"],
+      	"goodsNum":"1517-2698",
+      	"goodsTitle":"苏泊尔(SUPOR) DZ22YC806-40电炖锅 (2.2L 一锅三胆合金内壁 PVC按键面板 24小时预约自动保温)",
+      	"oldPrice":329,
+      	"sellprice":299,
+      	"color":"白色",
+      	"pOptionSelectedTitle":"电脑式",
+      	"detailEvaluate":{
+      		"totalNum":3,
+      		"totalScore":5,
+      		"EvaluatePople":[
+      			{
+      				"name":"赵XX",
+      				"score":5,
+      				"content":"快递送达快，产品质量好，已经用了，非常好用，推荐推荐推荐推荐",
+      				"time":"2017-07-07"
+      			}
+      		]
+      	},
+    	"detailInfoImg":[
+	    	"http://cdnimg.ocj.com.cn/item_images/item/15/17/2698/15172698L4.jpg",
+	    	"http://cdnimg.ocj.com.cn/item_images/item/15/17/2698/15172698L4.jpg",
+	    	"http://cdnimg.ocj.com.cn/item_images/item/15/17/2698/15172698L4.jpg"
+    	],
+    	"detailInfoImgText":{
+    		"goodsName":"苏泊尔(SUPOR) DZ22YC806-40电炖锅 (2.2L 一锅三胆合金内壁 PVC按键面板 24小时预约自动保温)",
+    		"goodsAll":"电炖锅*1 电源线*1 说明书*1",
+    		"pro1":"电炖锅*1 电源线*1 说明书*1",
+    		"production":"中国",
+    		"size":"39cm*39cm*32.4cm",
+    		"height":"6.6KG",
+    		"color":"白色",
+    		"material":"内胆：陶瓷内胆",
+    		"content":"供应商自行包装",
+    		"voltage":"220V/600W",
+    		"companyinfo":"苏泊尔创立于1994年，总部设在中国杭州，在杭州、玉环、绍兴、武汉和越南胡志明市建立了5大研发制造基地，拥有10000多名员工。苏泊尔拥有明火炊具、厨房小家电、厨卫电器三大事业领域，丰富的产品线",
+    		"speci":"4L容量 还原明火炖汤 小火精煨 球形内胆环流沸腾加热",
+    		"notice":"签收时请查看产品外包装是否完整",
+    		"replace":"商品外观无损",
+    		"return":"外包装无破损",
+    		"guaranteeTime":"1年"	
+    	}
+    }
+}

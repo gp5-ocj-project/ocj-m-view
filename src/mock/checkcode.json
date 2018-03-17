@@ -1,0 +1,8 @@
+{
+    "ret": true,
+    "errcode":"",
+    "errmsg": "重新获取验证码成功",
+    "data": {
+      "success": true
+    }
+}

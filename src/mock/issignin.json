@@ -1,0 +1,8 @@
+{
+    "ret": true,
+    "errcode": 1,
+    "errmsg": "token验证通过",
+    "data": {
+      "success": true
+    }
+}
