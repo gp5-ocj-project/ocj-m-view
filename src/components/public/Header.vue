@@ -63,11 +63,10 @@
 
 <style lang="scss">
 	@import '../../styles/yo/usage/core/reset.scss';
-
 	header{
 		height: 0.95rem;
 	    width: 100%;
-	    position: relative;
+	    
 	    background-color: #ffffff;
 	    z-index: 2000;
 	    @include clearfix();
@@ -116,7 +115,7 @@
 				    }
 			    }
 			    .search{
-			    	height: .34rem;
+			    	height: .32rem;
 				    float: right;
 				    background-color: #d42e2c;
 				    @include border(1px 1px 1px 1px, #d42e2c);
@@ -125,9 +124,9 @@
 				    margin-top: 2px;
 
 				    .field{
-				    	font-size:.16rem;
+				    	font-size:.14rem;
 			    	    color: white;
-	    				line-height: .34rem;
+	    				line-height: .30rem;
 				    }
 				    i{
 				    	display: inline-block;

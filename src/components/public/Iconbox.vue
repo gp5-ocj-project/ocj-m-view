@@ -93,14 +93,17 @@
 		width: 100%;
 		background: #fff;
 		margin-top: 0.03rem;
-
+		padding-bottom: 0.01rem;
+		@include border(0 0 .01rem 0, #eee, solid);
 		.iconItem{
 			@include flexbox();
 			@include justify-content(space-between);
 			@include align-items(center);
 			@include flex-wrap(wrap);
-			padding: 0 .10rem;
-			padding-top: .2rem; 
+			
+			padding: 0 .1rem;
+
+			padding-top: .20rem; 
 			li{
 				@include flex(1);
 				text-align: center;
@@ -108,7 +111,6 @@
 					display: inline-block;
 					height: .45rem;
 					width: .45rem;
-
 					img{
 						height: 100%;
 						width: 100%;

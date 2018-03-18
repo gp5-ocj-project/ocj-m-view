@@ -1,10 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-
-import Header from "@/components/public/Header";
-import Banner from "@/components/public/Banner";
-
 import HomeView from "@/views/HomeView";
 
 //登陆注册
@@ -15,10 +11,6 @@ import RegistView from "@/views/RegistView";
 import DetailView from "@/views/DetailView";
 import DetailHome from "@/components/detail/DetailHome";
 import DetailClassify from "@/components/detail/DetailClassify";
-
-
-
-
 
 Vue.use(Router)
 
@@ -31,14 +23,7 @@ export default new Router({
     {
       path: '/home',
       name: 'home',
-      component: HomeView,
-      children:[
-        {
-          path: '/banner',
-          name: 'Banner',
-          component: Banner
-        }
-      ]
+      component: HomeView
     },
     {
       path: '/login',

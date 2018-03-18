@@ -12,6 +12,7 @@
 	}
 </script>
 <style lang='scss'>
+	@import '../../styles/yo/usage/core/reset.scss';
 	
 	.adv{
 		width: 100%;
@@ -20,8 +21,8 @@
 		display: inline-block;
 		width: 100%;
 		height: 100%;
-
 		img{
+			@include border(0 0 .01rem 0, #fff, solid);
 			width: 100%;
 			height: 100%;
 		}
