@@ -1,9 +1,8 @@
 <template>
     <div class="login-page">
         <div class="login-header">
-            <div class="return">
-                <i>1</i>
-                <span>返回</span>
+            <div class="return" @click="goBack">
+               <span><i class="yo-ico">&#xe621;</i>返回</span>
             </div>
             <h3>快速登陆</h3>
             <div class="area">
@@ -15,7 +14,7 @@
                 <p><input type="text" placeholder="手机号/用户名/邮箱"/></p>
                 <p>
                     <input type="password"  placeholder="请输入密码" />
-                    <span>XX</span>
+                    <span><i class="yo-ico">&#xe681;</i></span>
                 </p>
                 <div class="input-code">
                     <p><input type="text" placeholder="请输入验证码" /></p>
@@ -25,28 +24,35 @@
                     <span><mt-button type="primary">动态码登陆</mt-button></span>
                     <span><mt-button type="primary">直接登陆</mt-button></span>
                 </div>
-                <div class="go-link"><span>找回密码</span><span>立即登陆</span></div>
+                <div class="go-link"><span>找回密码</span><router-link tag="span" to="/regist">立即注册</router-link></div>
             </div>
             <div class="relation">
                 <p><span>合作网站账号登陆</span></p>
                 <ul>
-                    <li><img src="" alt="">1</li>
-                    <li><img src="" alt="">1</li>
-                    <li><img src="" alt="">1</li>
+                    <li><img src="../assets/images/detail/icon_weibo.png" alt=""/></li>
+                    <li><img src="../assets/images/detail/icon_alipay.png" alt=""/></li>
+                    <li><img src="../assets/images/detail/icon_qq.png" alt=""/></li>
                 </ul>
             </div>
         </div>
         
     </div>
 </template>
+
 <script>
     import { Button } from 'mint-ui'
     export default {
         components: {
             [Button.name]:Button
-        }
+        },
+         methods: {
+			goBack() {
+				window.history.go(-1);
+			}
+		}
     }
 </script>
+
 <style lang="scss" scoped>
 @import '../styles/yo/usage/core/reset.scss';    
 .login-page{
@@ -66,6 +72,8 @@
             color: #5b5b5d;
             text-align: center;
             line-height: .44rem;
+            font-weight: 600;
+            color:#707070;
         }
         h3{
            font-weight: bold;
@@ -73,6 +81,7 @@
            @include flex();
            text-align: center;
            line-height: .44rem;
+           color:#707070;
         }
         .area{
             width: .7rem;
@@ -81,6 +90,7 @@
             line-height: .44rem;
             span{
                 font-size: 12px;
+                color:#666666;
             }
         }
     }
@@ -115,6 +125,8 @@
                     @include flex();
                     text-align: center;
                     line-height: .36rem;
+                    font-size: .2rem;
+                    color:#666;
                 }
             }
             .input-code{
@@ -174,6 +186,7 @@
                 height: .2rem;
                 width: 100%;
                 @include flexbox();
+                color:#666;
                 span{
                     width: 50%;
                     height: 100%;
@@ -211,8 +224,11 @@
                 li{
                     height: 100%;
                     width: .3rem;
-                    background: red;
-                   margin: 0 .1rem;
+                    margin: 0 .1rem;
+                    img{
+                    	width: 100%;
+                    	height: 100%;
+                    }
                 }
             }
         }

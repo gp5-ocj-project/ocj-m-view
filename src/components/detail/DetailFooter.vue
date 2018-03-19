@@ -1,11 +1,11 @@
 <template>
 	<div class="detail-footer">
 		<div>
-			<i>1</i>
+			<i class="yo-ico">&#xe606;</i>
 			<span>客服</span>
 		</div>
 		<div>
-			<i>1</i>
+			<i class="yo-ico">&#xe603;</i>
 			<span>收藏</span>
 		</div>
 		<div>
@@ -35,6 +35,10 @@
         width: .53rem;
         @include flexbox();
         font-size: 12px; 
+        i{
+        	font-size: .2rem;
+        	color:#999;
+        }
     }
     div:first-child{
         @include justify-content();

@@ -1,18 +1,24 @@
 <template>
 	<div class="detail-header">
-		<div class="return">
-			<i>1</i>
-			<span>返回</span>
+		<div class="return" @click="goBack">
+			<span><i class="yo-ico">&#xe621;</i>返回</span>
 		</div>
 		<h3>商品详情</h3>
 		<div class="share">
-			<span><router-link to="/detail/classify">分享</router-link></span>
-			<i>1</i>
+			<span>分享</span>
+			<i class="yo-ico">&#xe655;</i>
 		</div>	
 	</div>
 </template>
 
 <script>
+	export default{
+		methods: {
+			goBack() {
+				window.history.go(-1);
+			}
+		}
+	}
 </script>
 
 <style lang="scss" scoped>
@@ -29,6 +35,10 @@
         color: #5b5b5d;
         text-align: center;
         line-height: .44rem;
+        font-weight:600;
+        @include flexbox();
+        @include justify-content();
+		@include align-items();
     }
     h3{
        font-weight: bold;
@@ -36,14 +46,20 @@
        @include flex();
        text-align: center;
        line-height: .44rem;
+       color:#666;
     }
     .share{
         width: .7rem;
         height: 100%;
         text-align: center;
         line-height: .44rem;
+        color:#666;
         span{
             font-size: 12px;
+            font-weight: 600;
+        }
+        i{
+        	font-size: .24rem;
         }
     }
 }

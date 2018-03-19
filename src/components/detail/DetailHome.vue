@@ -1,7 +1,7 @@
 <template>
 	<div class="detail-home">
 		<div class="detail-banner">
-			<mt-swipe :show-indicators="false" >
+			<mt-swipe :auto="0" :show-indicators="false" >
 			  <mt-swipe-item><img src="../../assets/images/banner/1_20160330152144_48.jpg"/></mt-swipe-item>
 			  <mt-swipe-item><img src="../../assets/images/banner/1_20160330152144_48.jpg"/></mt-swipe-item>
 			  <mt-swipe-item><img src="../../assets/images/banner/1_20160330152144_48.jpg"/></mt-swipe-item>
@@ -22,14 +22,14 @@
 			<div>
 				规格选择 &nbsp;&nbsp;&nbsp;&nbsp;已选：默认 "1件"
 			</div>
-			<i>1</i>
+			<i class="yo-ico">&#xe61e;</i>
 		</div>
 		<div class="detailAddressBox">
             <div >
                 <p>配送至</p>
                 <span class="detailAddressShow" id="area_sel">请选择配送地区</span>      
             </div>
-            <i>1</i>
+           <i class="yo-ico">&#xe61e;</i>
        </div>
        <div class="detailScoreBox">
            <div class="detailScoreBoxTitle">
@@ -37,8 +37,7 @@
            		<span>174条评论</span>
            		<span>综合评分</span>
            		<span>AAAAA</span>
-           		<i>1</i>
-          
+           		<i class="yo-ico">&#xe61e;</i>
         	</div>
           	<div class="detailScoreContent">
            		<div class="detailScoreContentName">
@@ -50,16 +49,17 @@
 		<div class="detailNoticeBox">
         	<div class="detailNoteIcon_zheng">
         		<div>
-        			<i>1</i>
+        			<i class="yo-ico">&#xe65e;</i>
         			<span>正品保障</span>
         		</div>
         		<div>
-        			<i>1</i>
+        			<i class="yo-ico">&#xe7b5;</i>
         			<span>东东客服</span>
         		</div>
         	</div> 
             <div class="detailNoteIcon_tui">商品一经售出，若无质量问题，不接受7天无理由退换货</div>
       </div>
+      <div class="checkgoodsinfo"><router-link to="/detail/classify" tag="span">查看商品信息</router-link></div>
 	</div>
 </template>
 
@@ -148,8 +148,10 @@
         div{
            @include flex(); 
         }
-        i{
+       i{
             width: 8%;
+            font-size: .2rem;
+            color:#535353;
         }
         
     }
@@ -180,6 +182,8 @@
         i{
             width: 8%;
             padding-top: .12rem;
+            font-size: .2rem;
+            color:#535353;
         }
         
     }
@@ -203,6 +207,8 @@
             }
             i{
                 @include flex();
+                font-size: .2rem;
+            	color:#535353;
             }
         }
         .detailScoreContent{
@@ -232,6 +238,10 @@
         padding: .05rem .11rem;
         background: #e3e3e3;
         font-size:12px; 
+        color:#999;
+        i{
+        	font-size: .15rem;	
+        }
         .detailNoteIcon_zheng{
             @include flexbox();
             line-height: .35rem;
@@ -248,6 +258,13 @@
             
         }
     }
+    .checkgoodsinfo{
+   		height: .3rem;
+   		width: 100%;
+   		line-height: .3rem;
+   		text-align: center;
+   		color:#666;
+   	}
    
 }
 

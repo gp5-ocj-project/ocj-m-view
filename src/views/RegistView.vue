@@ -1,9 +1,8 @@
 <template>
     <div class="regist-page">
         <div class="regist-header">
-            <div class="return">
-                <i>1</i>
-                <span>返回</span>
+            <div class="return"  @click="goBack">
+                <span><i class="yo-ico">&#xe621;</i>返回</span>
             </div>
             <h3>注册</h3>
             <div class="area">
@@ -29,10 +28,14 @@
     export default {
         components: {
             [Button.name]:Button
-        }
+        },
+        methods: {
+			goBack() {
+				window.history.go(-1);
+			}
+		}
     }
 </script>
-
 
 <style lang="scss" scoped>
 @import '../styles/yo/usage/core/reset.scss';  
@@ -54,6 +57,9 @@
             color: #5b5b5d;
             text-align: center;
             line-height: .44rem;
+            font-weight: 600;
+            color:#707070;
+            
         }
         h3{
            font-weight: bold;
@@ -61,6 +67,7 @@
            @include flex();
            text-align: center;
            line-height: .44rem;
+           color:#707070;
         }
         .area{
             width: .7rem;

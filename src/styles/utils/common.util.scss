@@ -11,6 +11,12 @@ $base-color: #00b38a;
   url('../assets/fonts/iconfont.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'yofont';
+  src: url('../assets/fonts/detail/iconfont.woff') format('woff'),
+  url('../assets/fonts/detail/iconfont.ttf') format('truetype');
+}
+
 .swiper-container {
   display: block;
   width: 100%;
