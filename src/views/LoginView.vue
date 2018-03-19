@@ -11,18 +11,14 @@
 	    </div>
         <div class="login-content">
             <div class="login-box">
-                <p><input type="text" placeholder="手机号/用户名/邮箱"/></p>
+                <p><input type="text" v-model="username" placeholder="请输入手机号"/></p>
                 <p>
-                    <input type="password"  placeholder="请输入密码" />
-                    <span><i class="yo-ico">&#xe681;</i></span>
+                    <input :type="pswshow" v-model="password" placeholder="请输入密码" />
+                    <span @click="pswControl"><i class="yo-ico">&#xe681;</i></span>
                 </p>
-                <div class="input-code">
-                    <p><input type="text" placeholder="请输入验证码" /></p>
-                    <span><img src="" alt=""/></span>
-                </div>
                 <div class="btn">
-                    <span><mt-button type="primary">动态码登陆</mt-button></span>
-                    <span><mt-button type="primary">直接登陆</mt-button></span>
+                    <span><mt-button type="primary" @click.prevent="checkAllInfo">立即登陆</mt-button></span>
+                    <span><mt-button type="primary" >动态登陆</mt-button></span>
                 </div>
                 <div class="go-link"><span>找回密码</span><router-link tag="span" to="/regist">立即注册</router-link></div>
             </div>
@@ -40,15 +36,66 @@
 </template>
 
 <script>
-    import { Button } from 'mint-ui'
+    import { Button,Toast } from 'mint-ui';
+    import axios from 'axios';
     export default {
+        data:() => {
+            return {
+                username:'',
+                password:'',
+                isShow:true,
+                pswshow:'password'
+            }
+        },
         components: {
             [Button.name]:Button
         },
-         methods: {
+        methods: {
+            //返回
 			goBack() {
 				window.history.go(-1);
-			}
+            },
+            //检验登陆信息
+            checkAllInfo() {
+                let that = this;
+				let allInfo = {
+					username: this.username,
+					password: this.password
+                }
+                axios.get('/api/users/signin',allInfo)
+					.then(function( res){
+						if(res.data.data.success){
+							Toast({
+								message:'登录成功！',
+								duration: 2000
+							});
+							//将用户信息存到vuex
+							that.$store.commit('getUserInfo',res.data.data);
+						}else{
+							Toast({
+								message:'用户不存在，请先注册！',
+								//duration: 2000
+							});
+						}
+					})
+					.catch(function(err){
+					    Toast({
+                            message:'网络错误！',
+                            duration: 2000
+                        });
+					})
+            },
+            //控制密码显示隐藏
+            pswControl() {
+                if(this.isShow){
+                    this.pswshow = "password";
+                    this.isShow = !this.isShow;
+                }else{
+                    this.pswshow = "text";
+                    this.isShow = !this.isShow;
+                }
+            }
+
 		}
     }
 </script>
