@@ -1,8 +1,16 @@
 <template>
     <div class="login-page">
         <div class="login-header">
+<<<<<<< HEAD
             <div class="return" @click="goBack">
                <span><i class="yo-ico">&#xe621;</i>返回</span>
+=======
+            <div class="return">
+                <i>1</i>
+                <router-link to='/' tag="span">
+                    返回
+                </router-link>
+>>>>>>> ocj-m-view20180317addFunjiazhi
             </div>
             <h3>快速登陆</h3>
             <div class="area">
@@ -40,7 +48,8 @@
 </template>
 
 <script>
-    import { Button } from 'mint-ui'
+    import { Button } from 'mint-ui';
+    
     export default {
         components: {
             [Button.name]:Button
