@@ -1,3 +1,5 @@
+<!-- 更多活动 -->
+
 <template>
 	
 	<div class="classifyactive">
@@ -45,8 +47,9 @@
 				<div class="activename">美丽绽放</div>
 			</div>
 		</div>
-
-
+		<div class="item">
+			
+		</div>
 	</div>
 
 </template>
@@ -73,6 +76,9 @@
 			    width: 100%;
 			    overflow: hidden;
 			    font-size: 0;
+			    position: relative;
+				
+				
 			}
 			.activetitle{
 			    padding: 0 12px;
@@ -99,6 +105,8 @@
 				    padding: .1rem .05rem;
     			}
 			}
+
+
 
 		}
 

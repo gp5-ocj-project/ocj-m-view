@@ -7,6 +7,7 @@
 		<live></live>
 		<preference-shop></preference-shop>
 		<more-active></more-active>
+		<goods-list></goods-list>
   </div>
 </template>
 
@@ -24,7 +25,10 @@ import Banner from '../components/public/Banner';
 import Live from '../components/home/Live';
 //优选商城
 import PreferenceShop from '../components/home/PreferenceShop';
+//活动
 import MoreActive from '../components/home/MoreActive';
+//商品列表
+import GoodsList from '../components/home/Goods';
 
 export default {
 
@@ -35,7 +39,8 @@ export default {
 		Banner,
 		Live,
 		PreferenceShop,
-		MoreActive
+		MoreActive,
+		GoodsList
 	}
 
 }
