@@ -3,7 +3,9 @@
         <div class="login-header">
             <div class="return">
                 <i>1</i>
-                <span>返回</span>
+                <router-link to='/' tag="span">
+                    返回
+                </router-link>
             </div>
             <h3>快速登陆</h3>
             <div class="area">
@@ -40,7 +42,8 @@
     </div>
 </template>
 <script>
-    import { Button } from 'mint-ui'
+    import { Button } from 'mint-ui';
+    
     export default {
         components: {
             [Button.name]:Button

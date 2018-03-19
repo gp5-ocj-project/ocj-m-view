@@ -8,6 +8,8 @@
 		<preference-shop></preference-shop>
 		<more-active></more-active>
 		<goods-list></goods-list>
+		<copyright></copyright>
+
   </div>
 </template>
 
@@ -30,6 +32,10 @@ import MoreActive from '../components/home/MoreActive';
 //商品列表
 import GoodsList from '../components/home/Goods';
 
+import Copyright from '../components/home/Footer';
+
+
+console.log(Copyright);
 export default {
 
 	components: {
@@ -40,14 +46,12 @@ export default {
 		Live,
 		PreferenceShop,
 		MoreActive,
-		GoodsList
+		GoodsList,
+		Copyright
 	}
 
 }
 </script>
 
-<style lang="scss">
-	.container{
-		overflow-y: scroll;
-	}
+<style>
 </style>

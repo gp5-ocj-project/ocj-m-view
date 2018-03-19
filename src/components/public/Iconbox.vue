@@ -34,7 +34,7 @@
 						title: '看视频'
 					},
 					{
-						golink: 'http://m.ocj.com.cn/shortvideo/dfcyx_list?domain_id=7781_6481_9544_1_12009_WASTE',
+						golink: '/list',
 						imgurl: 'http://cdnimg.ocj.com.cn/image_site/shop/conts/7781/6481/9544/12009/2_20160509124952_100.png',
 						title: '热销榜'
 					},
@@ -49,7 +49,7 @@
 						title: 'SMG商城'
 					},
 					{
-						golink: 'http://m.ocj.com.cn/shortvideo/dfcyx_list?domain_id=7781_6481_9544_1_12009_WASTE',
+						golink: '/login',
 						imgurl: 'http://cdnimg.ocj.com.cn/image_site/shop/conts/7781/6481/9544/10764/5_20160527180448_53.png',
 						title: '我的OCJ'
 					},

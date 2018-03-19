@@ -2,7 +2,7 @@
 	<div class="detail-header">
 		<div class="return">
 			<i>1</i>
-			<span>返回</span>
+            <router-link tag="span" to="/">返回</router-link>
 		</div>
 		<h3>商品详情</h3>
 		<div class="share">
