@@ -10,29 +10,64 @@
             </div>	
 	    </div>
          <div class="regist-content">
-              <p><input type="text" placeholder="请输入手机号"/></p>
+              <p><input type="text" v-mode="username" placeholder="请输入手机号"/></p>
               <div class="input-code">
-                <p><input type="text" placeholder="请输入验证码" /></p>
-                <span><img src="" alt=""/></span>
+                <p><input type="password"  v-mode="password" placeholder="请输入密码" /></p>
               </div>
               <div class="regist-agree"><input type="radio"/><span>同意</span>《东方购物网络使用条款》</div>
               <div class="regist-btn">
-                  <mt-button type="primary">下一步</mt-button>
+                  <mt-button type="primary" @click.prevent="checkAllInfo">立即注册</mt-button>
               </div>
          </div>
     </div>
 </template>
 
 <script>
-    import { Button } from 'mint-ui'
+    import { Button,Toast } from 'mint-ui';
+    import axios from 'axios';
     export default {
+         data:() => {
+            return {
+                username:'',
+                password:''
+            }
+        },
         components: {
             [Button.name]:Button
         },
         methods: {
 			goBack() {
 				window.history.go(-1);
-			}
+            },
+            checkAllInfo() {
+                let that = this;
+				let allInfo = {
+					username: this.username,
+					password: this.password,
+                }
+                axios.get('/api/users/signup',allInfo)
+					.then(function( res){
+						if(res.data.data.success){
+							Toast({
+								message:'注册成功！',
+								duration: 2000
+							});
+							//将用户信息存到vuex
+							that.$store.commit('getUserInfo',res.data.data);
+						}else{
+							Toast({
+								message:'该用户已存在，请重新注册！',
+								duration: 2000
+							});
+						}
+					})
+					.catch(function(err){
+					    Toast({
+                            message:'网络错误！',
+                            duration: 2000
+                        });
+					})
+            }
 		}
     }
 </script>
@@ -104,7 +139,7 @@
             @include flexbox();
             p{
                 height: 100%;
-                width: 60%;
+                width:100%;
                 @include border(1px);
                 @include border-radius(.15rem);
                 input{
@@ -113,16 +148,6 @@
                     border:0;
                     padding: 0 .15rem;
                     font-size: .12rem;
-                }
-            }
-            span{
-                @include flex();
-                @include align-items();
-                height: 100%;
-                img{
-                    width: 80%;
-                    height: 100%;
-                    background: #f00;
                 }
             }
         }

@@ -17,6 +17,11 @@
     import DetailFooter from "../components/detail/DetailFooter";
 
 	export default {
+        data:() => {
+            return {
+
+            }
+        },
 		components: {
 			DetailHeader,
 			DetailFooter,
