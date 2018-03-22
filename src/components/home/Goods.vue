@@ -99,17 +99,12 @@
 			}
 		},
 
-
 		mounted(){
-			// this.goodList = this.loadData().data.data.result;
-			// console.log(this.goodList);
-			var count = 1;
+			var count = 0;
 			axios({
 				url: '/api/goods/list/' + count
 			}).then((result) => {
-				console.log(result);
 				this.goodList = result.data.data.result;
-				console.log(this.goodList.length);
 			}).catch(() => {return '加载失败 :(.....'})
 		},
 		methods: {
