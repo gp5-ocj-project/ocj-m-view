@@ -1,7 +1,7 @@
 <template>
 	<div class="good-list">
 		<ul>
-			<router-link tag="li" to="/detail/123" v-for="(v,i) in goodList" :key="i">
+			<router-link tag="li" :to="`/detail/`+ v['_id']" v-for="(v,i) in goodList" :key="i">
 				<div class="CommodityContent">
 					<div class="CommodityTip">
 						<div class="tipbox bgtv">
@@ -105,6 +105,7 @@
 				url: '/api/goods/list/' + count
 			}).then((result) => {
 				this.goodList = result.data.data.result;
+				console.log(this.goodList);
 			}).catch(() => {return '加载失败 :(.....'})
 		},
 		methods: {

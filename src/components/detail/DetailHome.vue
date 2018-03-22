@@ -75,13 +75,15 @@
 			}
 		},
 		mounted() {
+        
             this.getGoodsDetail();
         },
         methods: {
             getGoodsDetail () {
                 this.goodsId = this.$route.params.id;
-                axios.get('/api/goods/detail/'+this.goodsId)
+                axios.get('/api/goods/item/'+this.goodsId)
                     .then((res) =>{
+                        console.log(res);
                         this.detailData = res.data.RspData;
                         this.Pictures = res.data.RspData.data.Pictures;
                         this.data=res.data.RspData.data;
