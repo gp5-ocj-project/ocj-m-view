@@ -35,9 +35,7 @@ import GoodsList from '../components/home/Goods';
 import Copyright from '../components/home/Footer';
 
 
-console.log(Copyright);
 export default {
-
 	components: {
 		HeaderComponent,
 		Adv,
@@ -49,7 +47,6 @@ export default {
 		GoodsList,
 		Copyright
 	}
-
 }
 </script>
 
