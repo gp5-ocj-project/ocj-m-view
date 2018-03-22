@@ -2,7 +2,7 @@
 	<div class="detail-home">
 		<div class="detail-banner">
 			<mt-swipe :auto="0" :show-indicators="false" >
-			  <mt-swipe-item  v-for= "v in Pictures" :key="v"><img :src="`${v}`"/></mt-swipe-item>
+			  <mt-swipe-item  v-for= "(v) in Pictures" :key="v"><img :src="`${v}`"/></mt-swipe-item>
 			</mt-swipe>
 			<div class="detailBannerNum">
 				<span class="detailBannerCurrentNum">1</span>
@@ -57,7 +57,7 @@
         	</div> 
             <div class="detailNoteIcon_tui">商品一经售出，若无质量问题，不接受7天无理由退换货</div>
       </div>
-      <div class="checkgoodsinfo"><router-link to="/detail/123/classify" tag="span">查看商品信息</router-link></div>
+      <div class="checkgoodsinfo"><router-link :to="`/detail/${goodsId}/classify`" tag="span">查看商品信息</router-link></div>
 	</div>
 </template>
 
@@ -68,8 +68,8 @@
 		data:() => {
 			return {
                 detailData:'',
-                goodsId:'',
                 Pictures:'',
+                goodsId:'',
                 data:'',
                 TopOneYgmCommodityVote:''
 			}
@@ -80,15 +80,15 @@
         },
         methods: {
             getGoodsDetail () {
-                this.goodsId = this.$route.params.id;
-                axios.get('/api/goods/item/'+this.goodsId)
+                let goodsId = this.$route.params.id;
+                this.goodsId = goodsId;
+                axios.get('/api/goods/item/'+goodsId)
                     .then((res) =>{
-                        console.log(res);
-                        this.detailData = res.data.RspData;
-                        this.Pictures = res.data.RspData.data.Pictures;
-                        this.data=res.data.RspData.data;
-                        this.TopOneYgmCommodityVote = res.data.RspData.TopOneYgmCommodityVote
-                        console.log(res.data.RspData.data.CommodityName)
+                        console.log(res.data.data.RspData);
+                        this.detailData = res.data.data.RspData;
+                        this.Pictures = res.data.data.RspData.data.Pictures;
+                        this.data=res.data.data.RspData.data;
+                        this.TopOneYgmCommodityVote = res.data.data.RspData.TopOneYgmCommodityVote
                     })
             }
         },
@@ -113,10 +113,14 @@
         position: relative;
         height: 3.2rem;
         width: 100%;
-        img{
-            height: 100%;
-            width: 100%;   
+        .mint-swipe{
+             min-height: 3.2rem !important;  
+             img{
+                height: 100%;
+                width: 100%;  
+            }
         }
+       
         .detailBannerNum{
             position: absolute;
             bottom: 10px;

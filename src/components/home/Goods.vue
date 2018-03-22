@@ -40,45 +40,6 @@
 					</div>
 				</div>
 			</router-link>
-			<li>
-				<div class="CommodityContent">
-					<div class="CommodityTip">
-						<div class="tipbox bgtv">
-							<div class="tiptitle">
-								<img src="http://m.ocj.com.cn/common/mobile_phone/cssimage/indeximg/tvgouwulogo.png">
-							</div>
-							<div class="tipintro">
-								TV商品
-							</div>
-						</div>
-					</div>
-					<div class="CommodityLogo">
-						<img src="http://cdnimg.ocj.com.cn/images/brandshop/mall/SP0840600.gif" width="123" height="52" onerror="removeObj(this)">
-					</div>
-					<div class="CommodityImg">
-						<a href="/detail/15221004?domain_id=7781_6481_9545_1_10781_WASTE">
-							<img data-src="http://cdnimg.ocj.com.cn/item_images/item/15/22/1004/15221004-L.jpg" src="http://cdnimg.ocj.com.cn/item_images/item/15/22/1004/15221004-L.jpg" class=" lazyloaded">
-						</a>
-					</div>
-				</div>
-				<div class="CommodityIntro">
-					<a href="http://m.ocj.com.cn/detail/15221004?domain_id=7781_6481_9545_1_10781_WASTE">
-						<div class="title">[迎春好礼]一只鼎 野生黄泥螺蟹股金牌美味组</div>
-					</a>
-					<div class="hintro"></div>
-					<div class="hmoneytipBox">
-						<div class="hzhekouBox"></div>
-						<div class="hmoney">
-							<span>￥</span>
-							203
-						</div>
-						<div class="hyouhuiicon">
-							<span class="htipcx">促</span>
-							<span class="htipjf">积</span>
-						</div>
-					</div>
-				</div>
-			</li>
 		</ul>
 
 

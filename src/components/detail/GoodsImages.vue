@@ -10,22 +10,14 @@
 	export default {
 		data:() => {
 			return {
-                detailData:'',
-                goodsId:'',
                 Pictures:'',
-                data:'',
-                TopOneYgmCommodityVote:''
 			}
 		},
 		mounted() {
-           this.goodsId = this.$route.params.id;
-           axios.get('/api/goods/detail/'+this.goodsId)
+           let goodsId = this.$route.params.id;
+           axios.get('/api/goods/item/'+goodsId)
             .then((res) =>{
-                this.detailData = res.data.RspData;
-                this.Pictures = res.data.RspData.data.Pictures;
-                this.data=res.data.RspData.data;
-                this.TopOneYgmCommodityVote = res.data.RspData.TopOneYgmCommodityVote
-                console.log(res.data.RspData.data.CommodityName)
+                this.Pictures = res.data.data.RspData.data.Pictures;
             })
         }
     }
