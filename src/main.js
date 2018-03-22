@@ -8,10 +8,13 @@ Vue.config.productionTip = false
 
 import './styles/app.scss';
 
-/* eslint-disable no-new */
+//全局状态管理vuex
+import store from './vuex/store';
+
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

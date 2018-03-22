@@ -1,9 +1,8 @@
 <template>
     <div class="regist-page">
         <div class="regist-header">
-            <div class="return">
-                <i>1</i>
-                <span>返回</span>
+            <div class="return"  @click="goBack">
+                <span><i class="yo-ico">&#xe621;</i>返回</span>
             </div>
             <h3>注册</h3>
             <div class="area">
@@ -11,28 +10,70 @@
             </div>	
 	    </div>
          <div class="regist-content">
-              <p><input type="text" placeholder="请输入手机号"/></p>
+              <p><input type="text" v-model="username" placeholder="请输入手机号"/></p>
               <div class="input-code">
-                <p><input type="text" placeholder="请输入验证码" /></p>
-                <span><img src="" alt=""/></span>
+                <p><input type="password"  v-model="password" placeholder="请输入密码" /></p>
               </div>
-              <div class="regist-agree"><input type="radio"/><span>同意</span>《东方购物网络使用条款》</div>
+              <div class="regist-agree"><input type="radio" checked/><span>同意</span>《东方购物网络使用条款》</div>
               <div class="regist-btn">
-                  <mt-button type="primary">下一步</mt-button>
+                  <mt-button type="primary" @click.prevent="checkAllInfo">立即注册</mt-button>
               </div>
          </div>
     </div>
 </template>
 
 <script>
-    import { Button } from 'mint-ui'
+    import { Button,Toast } from 'mint-ui';
+    import axios from 'axios';
+    import WebStorageCache from 'web-storage-cache';
+     let wsCache = new WebStorageCache();
     export default {
+         data:() => {
+            return {
+                username:'',
+                password:''
+            }
+        },
         components: {
             [Button.name]:Button
-        }
+        },
+        methods: {
+			goBack() {
+				window.history.go(-1);
+            },
+            checkAllInfo() {
+                let that = this;
+				let allInfo = {
+					username: this.username,
+					password: this.password,
+                }
+                console.log(allInfo)
+                axios.post('/api/users/regist',allInfo)
+					.then(function( res){
+                        //console.log(res)
+						if(res.data.data.success){
+							Toast({
+								message:"注册成功",
+								duration: 2000
+							});
+                          that.$router.push({path: '/login'});
+						}else{
+							Toast({
+								message:'该用户已存在，请重新注册！',
+								duration: 2000
+							});
+						}
+					})
+					.catch(function(err){
+					    Toast({
+                            message:'网络错误！',
+                            duration: 2000
+                        });
+					})
+            }
+		}
     }
 </script>
-
 
 <style lang="scss" scoped>
 @import '../styles/yo/usage/core/reset.scss';  
@@ -54,6 +95,8 @@
             color: #5b5b5d;
             text-align: center;
             line-height: .44rem;
+            color:#707070;
+            
         }
         h3{
            font-weight: bold;
@@ -61,6 +104,7 @@
            @include flex();
            text-align: center;
            line-height: .44rem;
+           color:#707070;
         }
         .area{
             width: .7rem;
@@ -97,7 +141,7 @@
             @include flexbox();
             p{
                 height: 100%;
-                width: 60%;
+                width:100%;
                 @include border(1px);
                 @include border-radius(.15rem);
                 input{
@@ -106,16 +150,6 @@
                     border:0;
                     padding: 0 .15rem;
                     font-size: .12rem;
-                }
-            }
-            span{
-                @include flex();
-                @include align-items();
-                height: 100%;
-                img{
-                    width: 80%;
-                    height: 100%;
-                    background: #f00;
                 }
             }
         }

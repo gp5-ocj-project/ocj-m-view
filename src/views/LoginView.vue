@@ -1,11 +1,8 @@
 <template>
     <div class="login-page">
         <div class="login-header">
-            <div class="return">
-                <i>1</i>
-                <router-link to='/' tag="span">
-                    返回
-                </router-link>
+            <div class="return" @click="goBack">
+               <span><i class="yo-ico">&#xe621;</i>返回</span>
             </div>
             <h3>快速登陆</h3>
             <div class="area">
@@ -14,42 +11,109 @@
 	    </div>
         <div class="login-content">
             <div class="login-box">
-                <p><input type="text" placeholder="手机号/用户名/邮箱"/></p>
+                <p><input type="text" v-model="username" placeholder="请输入手机号"/></p>
                 <p>
-                    <input type="password"  placeholder="请输入密码" />
-                    <span>XX</span>
+                    <input :type="pswshow" v-model="password" placeholder="请输入密码" />
+                    <span @click="pswControl"><i class="yo-ico">&#xe681;</i></span>
                 </p>
-                <div class="input-code">
-                    <p><input type="text" placeholder="请输入验证码" /></p>
-                    <span><img src="" alt=""/></span>
-                </div>
                 <div class="btn">
-                    <span><mt-button type="primary">动态码登陆</mt-button></span>
-                    <span><mt-button type="primary">直接登陆</mt-button></span>
+                    <span><mt-button type="primary" @click.prevent="checkAllInfo">立即登陆</mt-button></span>
+                    <span><mt-button type="primary" >动态登陆</mt-button></span>
                 </div>
-                <div class="go-link"><span>找回密码</span><span>立即登陆</span></div>
+                <div class="go-link"><span>找回密码</span><router-link tag="span" to="/regist">立即注册</router-link></div>
             </div>
             <div class="relation">
                 <p><span>合作网站账号登陆</span></p>
                 <ul>
-                    <li><img src="" alt="">1</li>
-                    <li><img src="" alt="">1</li>
-                    <li><img src="" alt="">1</li>
+                    <li><img src="../assets/images/detail/icon_weibo.png" alt=""/></li>
+                    <li><img src="../assets/images/detail/icon_alipay.png" alt=""/></li>
+                    <li><img src="../assets/images/detail/icon_qq.png" alt=""/></li>
                 </ul>
             </div>
         </div>
         
     </div>
 </template>
+
 <script>
-    import { Button } from 'mint-ui';
-    
+    import { Button,Toast } from 'mint-ui';
+    import axios from 'axios';
+    import WebStorageCache from 'web-storage-cache';
+    let wsCache = new WebStorageCache();
     export default {
+        data:() => {
+            return {
+                username:'',
+                password:'',
+                isShow:true,
+                pswshow:'password'
+            }
+        },
         components: {
             [Button.name]:Button
-        }
+        },
+        methods: {
+            //返回
+			goBack() {
+				window.history.go(-1);
+            },
+            //检验登陆信息
+            checkAllInfo() {
+                let that = this;
+				let allInfo = {
+					username: this.username,
+					password: this.password
+                }
+               
+                axios.post('/api/users/login',allInfo)
+					.then(function( res){
+                        //console.log(res.data)
+						if(res.data.data.success){
+							Toast({
+								message:"登陆成功",
+								duration: 2000
+                            });
+                            //将用户信息存到localstorge
+                            wsCache.set('token', res.data.data.token, {exp : 1000 * 3600});
+                            wsCache.set('username', res.data.data.username, {exp : 1000 * 3600});
+                            that.$store.commit('checkUserInfo',{
+                                islogin:res.data.data.success,
+                                });
+                            if(that.$store.state.currentPage == '/detail/123'){
+								that.$router.push({path: '/detail/123'})
+							}else{
+							   that.$router.push({path: '/'});
+							}
+                           
+						}else{
+							Toast({
+								message:"没有该用户，请先注册",
+								duration: 2000
+							});
+						}
+					})
+					.catch(function(err){
+					    Toast({
+                            message:'网络错误！',
+                            duration: 2000
+                        });
+					})
+            },
+            //控制密码显示隐藏
+            pswControl() {
+                if(this.isShow){
+                    this.pswshow = "password";
+                    this.isShow = !this.isShow;
+                }else{
+                    this.pswshow = "text";
+                    this.isShow = !this.isShow;
+                }
+            }
+
+		}
     }
 </script>
+
 <style lang="scss" scoped>
 @import '../styles/yo/usage/core/reset.scss';    
 .login-page{
@@ -69,6 +133,7 @@
             color: #5b5b5d;
             text-align: center;
             line-height: .44rem;
+            color:#707070;
         }
         h3{
            font-weight: bold;
@@ -76,6 +141,7 @@
            @include flex();
            text-align: center;
            line-height: .44rem;
+           color:#707070;
         }
         .area{
             width: .7rem;
@@ -84,6 +150,7 @@
             line-height: .44rem;
             span{
                 font-size: 12px;
+                color:#666666;
             }
         }
     }
@@ -118,6 +185,8 @@
                     @include flex();
                     text-align: center;
                     line-height: .36rem;
+                    font-size: .2rem;
+                    color:#666;
                 }
             }
             .input-code{
@@ -177,6 +246,7 @@
                 height: .2rem;
                 width: 100%;
                 @include flexbox();
+                color:#666;
                 span{
                     width: 50%;
                     height: 100%;
@@ -214,8 +284,11 @@
                 li{
                     height: 100%;
                     width: .3rem;
-                    background: red;
-                   margin: 0 .1rem;
+                    margin: 0 .1rem;
+                    img{
+                    	width: 100%;
+                    	height: 100%;
+                    }
                 }
             }
         }

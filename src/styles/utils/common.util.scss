@@ -1,9 +1,7 @@
-#root {
+html,body,#root {
   height: 100%;
   width: 100%;
 }
-
-$base-color: #00b38a;
 
 @font-face {
   font-family: 'yofont';
@@ -11,16 +9,8 @@ $base-color: #00b38a;
   url('../assets/fonts/iconfont.ttf') format('truetype');
 }
 
-.swiper-container {
-  display: block;
-  width: 100%;
+@font-face {
+  font-family: 'yofont';
+  src: url('../assets/fonts/detail/iconfont.woff') format('woff'),
+  url('../assets/fonts/detail/iconfont.ttf') format('truetype');
 }
-
-header{
-	height: 95px;
-    width: 100%;
-    position: relative;
-    background-color: #ffffff;
-    z-index: 2000; 
-}
-

@@ -1,65 +1,63 @@
 <template>
 	<div class="detail-home">
 		<div class="detail-banner">
-			<mt-swipe :show-indicators="false" >
-			  <mt-swipe-item><img src="../../assets/images/banner/1_20160330152144_48.jpg"/></mt-swipe-item>
-			  <mt-swipe-item><img src="../../assets/images/banner/1_20160330152144_48.jpg"/></mt-swipe-item>
-			  <mt-swipe-item><img src="../../assets/images/banner/1_20160330152144_48.jpg"/></mt-swipe-item>
+			<mt-swipe :auto="0" :show-indicators="false" >
+			  <mt-swipe-item  v-for= "v in Pictures" :key="v"><img :src="`${v}`"/></mt-swipe-item>
 			</mt-swipe>
 			<div class="detailBannerNum">
-				<span class="detailBannerCurrentNum">5</span>
-				/<span class="detailBannerTotalNum">5</span>
+				<span class="detailBannerCurrentNum">1</span>
+				/<span class="detailBannerTotalNum">{{Pictures.length}}</span>
 			</div>
-			<div class="detailGoodsNum">货号：1521-8419</div>
+			<div class="detailGoodsNum">货号：{{data.CommodityCode}}</div>
 		</div>
 		<div class="detailCommodityIntro">
 			<div class="detailCommodityTitle">
-				[商城]锦元 3D硬金狗宝宝吊坠2g
+				{{data.CommodityName}}
 			</div>
-			<div class="detailCommodityPrice"><i>￥</i>880</div>
+			<div class="detailCommodityPrice"><i>￥</i>{{data.CommodityPrice}}</div>
 		</div>
 		<div class="detailOptionBox">
 			<div>
 				规格选择 &nbsp;&nbsp;&nbsp;&nbsp;已选：默认 "1件"
 			</div>
-			<i>1</i>
+			<i class="yo-ico">&#xe61e;</i>
 		</div>
 		<div class="detailAddressBox">
             <div >
                 <p>配送至</p>
-                <span class="detailAddressShow" id="area_sel">请选择配送地区</span>      
+                <span class="detailAddressShow" id="area_sel">请选择配送地区:&nbsp;&nbsp;&nbsp;&nbsp;{{data.ShippingAddress}}</span>      
             </div>
-            <i>1</i>
+           <i class="yo-ico">&#xe61e;</i>
        </div>
        <div class="detailScoreBox">
            <div class="detailScoreBoxTitle">
            		<span>商品评价</span>
-           		<span>174条评论</span>
+           		<span>{{TopOneYgmCommodityVote.ProductEvaluate}}条评论</span>
            		<span>综合评分</span>
            		<span>AAAAA</span>
-           		<i>1</i>
-          
+           		<i class="yo-ico">&#xe61e;</i>
         	</div>
           	<div class="detailScoreContent">
            		<div class="detailScoreContentName">
-           			<span>小明</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>AAAAA</span>
+           			<span>{{TopOneYgmCommodityVote.UserName}}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span></span>
            		</div>
-           		<div class="detailScoreContentText">这个猪肉铺味道还是不错的，妈妈非常喜欢吃，很好</div>  
+           		<div class="detailScoreContentText">{{TopOneYgmCommodityVote.CommentContent}}</div>  
         	</div>
         </div>
 		<div class="detailNoticeBox">
         	<div class="detailNoteIcon_zheng">
         		<div>
-        			<i>1</i>
+        			<i class="yo-ico">&#xe65e;</i>
         			<span>正品保障</span>
         		</div>
         		<div>
-        			<i>1</i>
+        			<i class="yo-ico">&#xe7b5;</i>
         			<span>东东客服</span>
         		</div>
         	</div> 
             <div class="detailNoteIcon_tui">商品一经售出，若无质量问题，不接受7天无理由退换货</div>
       </div>
+      <div class="checkgoodsinfo"><router-link to="/detail/123/classify" tag="span">查看商品信息</router-link></div>
 	</div>
 </template>
 
@@ -69,10 +67,29 @@
 	export default {
 		data:() => {
 			return {
-				detailData:'',
+                detailData:'',
+                goodsId:'',
+                Pictures:'',
+                data:'',
+                TopOneYgmCommodityVote:''
 			}
 		},
-		
+		mounted() {
+            this.getGoodsDetail();
+        },
+        methods: {
+            getGoodsDetail () {
+                this.goodsId = this.$route.params.id;
+                axios.get('/api/goods/detail/'+this.goodsId)
+                    .then((res) =>{
+                        this.detailData = res.data.RspData;
+                        this.Pictures = res.data.RspData.data.Pictures;
+                        this.data=res.data.RspData.data;
+                        this.TopOneYgmCommodityVote = res.data.RspData.TopOneYgmCommodityVote
+                        console.log(res.data.RspData.data.CommodityName)
+                    })
+            }
+        },
 		components: {
 			[Swipe.name]:Swipe,
 			[SwipeItem.name]:SwipeItem,
@@ -94,7 +111,10 @@
         position: relative;
         height: 3.2rem;
         width: 100%;
-        background: bisque;
+        img{
+            height: 100%;
+            width: 100%;   
+        }
         .detailBannerNum{
             position: absolute;
             bottom: 10px;
@@ -148,8 +168,10 @@
         div{
            @include flex(); 
         }
-        i{
+       i{
             width: 8%;
+            font-size: .2rem;
+            color:#535353;
         }
         
     }
@@ -180,6 +202,8 @@
         i{
             width: 8%;
             padding-top: .12rem;
+            font-size: .2rem;
+            color:#535353;
         }
         
     }
@@ -203,6 +227,8 @@
             }
             i{
                 @include flex();
+                font-size: .2rem;
+            	color:#535353;
             }
         }
         .detailScoreContent{
@@ -232,6 +258,10 @@
         padding: .05rem .11rem;
         background: #e3e3e3;
         font-size:12px; 
+        color:#999;
+        i{
+        	font-size: .15rem;	
+        }
         .detailNoteIcon_zheng{
             @include flexbox();
             line-height: .35rem;
@@ -248,6 +278,13 @@
             
         }
     }
+    .checkgoodsinfo{
+   		height: .3rem;
+   		width: 100%;
+   		line-height: .3rem;
+   		text-align: center;
+   		color:#666;
+   	}
    
 }
 

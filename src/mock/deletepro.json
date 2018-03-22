@@ -1,11 +1,10 @@
 {
     "ret": true,
     "errcode":"",
-    "errmsg": "注册成功",
+    "errmsg": "登陆成功",
     "data": {
       "success": true,
       "username": "admin",
-      "token": "adfaiweurdsj",
-      "userId":"123456"
+      "token": "adfaiweurdsj"
     }
-}
+  }

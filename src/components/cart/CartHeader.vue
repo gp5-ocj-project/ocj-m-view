@@ -1,12 +1,12 @@
 <template>
-	<div class="detail-header">
+	<div class="cart-header">
 		<div class="return" @click="goBack">
 			<span><i class="yo-ico">&#xe621;</i>返回</span>
 		</div>
-		<h3>商品详情</h3>
-		<div class="share">
-			<span>分享</span>
-			<i class="yo-ico">&#xe655;</i>
+		<h3>购物车</h3>
+		<div class="handle">
+			<span>删除</span>
+			<span>全不选</span>
 		</div>	
 	</div>
 </template>
@@ -23,21 +23,22 @@
 
 <style lang="scss" scoped>
 @import '../../styles/yo/usage/core/reset.scss'; 
-.detail-header{
+.cart-header{
     @include flexbox();
     width: 100%;
     height: 100%;
     color: #333;
     font-size: 14px;
     .return{
-        width: .7rem;
+        width: .9rem;
         height: 100%;
         color: #5b5b5d;
-        text-align: center;
         line-height: .44rem;
         @include flexbox();
-        @include justify-content();
-		@include align-items();
+        padding-left: .1rem;
+        i{
+            font-weight: 600;
+        }
     }
     h3{
        font-weight: bold;
@@ -47,17 +48,18 @@
        line-height: .44rem;
        color:#666;
     }
-    .share{
-        width: .7rem;
+    .handle{
+        @include flexbox();
+        width: .9rem;
         height: 100%;
         text-align: center;
         line-height: .44rem;
         color:#666;
         span{
-            font-size: 12px;
-        }
-        i{
-        	font-size: .24rem;
+            width: 50%;
+            height: 100%;
+            font-size: 14px;
+            text-align: center;
         }
     }
 }
