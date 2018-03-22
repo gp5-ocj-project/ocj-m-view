@@ -38,6 +38,8 @@
 <script>
     import { Button,Toast } from 'mint-ui';
     import axios from 'axios';
+    import WebStorageCache from 'web-storage-cache';
+    let wsCache = new WebStorageCache();
     export default {
         data:() => {
             return {
@@ -62,19 +64,31 @@
 					username: this.username,
 					password: this.password
                 }
-                axios.get('/api/users/signin',allInfo)
+               
+                axios.post('/api/users/login',allInfo)
 					.then(function( res){
+                        //console.log(res.data)
 						if(res.data.data.success){
 							Toast({
-								message:'登录成功！',
+								message:"登陆成功",
 								duration: 2000
-							});
-							//将用户信息存到vuex
-							that.$store.commit('getUserInfo',res.data.data);
+                            });
+                            //将用户信息存到localstorge
+                            wsCache.set('token', res.data.data.token, {exp : 1000 * 3600});
+                            wsCache.set('username', res.data.data.username, {exp : 1000 * 3600});
+                            that.$store.commit('checkUserInfo',{
+                                islogin:res.data.data.success,
+                                });
+                            if(that.$store.state.currentPage == '/detail/123'){
+								that.$router.push({path: '/detail/123'})
+							}else{
+							   that.$router.push({path: '/'});
+							}
+                           
 						}else{
 							Toast({
-								message:'用户不存在，请先注册！',
-								//duration: 2000
+								message:"没有该用户，请先注册",
+								duration: 2000
 							});
 						}
 					})
@@ -119,7 +133,6 @@
             color: #5b5b5d;
             text-align: center;
             line-height: .44rem;
-            font-weight: 600;
             color:#707070;
         }
         h3{

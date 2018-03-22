@@ -18,6 +18,9 @@ import DetailView from "@/views/DetailView";
 import DetailHome from "@/components/detail/DetailHome";
 import DetailClassify from "@/components/detail/DetailClassify";
 
+//购物车
+import CartView from "@/views/CartView";
+
 Vue.use(Router)
 
 export default new Router({
@@ -45,6 +48,11 @@ export default new Router({
       path: '/list',
       name:'list',
       component:List
+    },
+    {
+      path: '/cart',
+      name:'cart',
+      component:CartView
     },
     {
       path: '/detail/:id',

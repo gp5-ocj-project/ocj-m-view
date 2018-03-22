@@ -75,15 +75,20 @@
 			}
 		},
 		mounted() {
-           this.goodsId = this.$route.params.id;
-           axios.get('/api/goods/detail/'+this.goodsId)
-            .then((res) =>{
-                this.detailData = res.data.RspData;
-                this.Pictures = res.data.RspData.data.Pictures;
-                this.data=res.data.RspData.data;
-                this.TopOneYgmCommodityVote = res.data.RspData.TopOneYgmCommodityVote
-                console.log(res.data.RspData.data.CommodityName)
-            })
+            this.getGoodsDetail();
+        },
+        methods: {
+            getGoodsDetail () {
+                this.goodsId = this.$route.params.id;
+                axios.get('/api/goods/detail/'+this.goodsId)
+                    .then((res) =>{
+                        this.detailData = res.data.RspData;
+                        this.Pictures = res.data.RspData.data.Pictures;
+                        this.data=res.data.RspData.data;
+                        this.TopOneYgmCommodityVote = res.data.RspData.TopOneYgmCommodityVote
+                        console.log(res.data.RspData.data.CommodityName)
+                    })
+            }
         },
 		components: {
 			[Swipe.name]:Swipe,
@@ -106,10 +111,9 @@
         position: relative;
         height: 3.2rem;
         width: 100%;
-        background: bisque;
         img{
-            width: 100%;
             height: 100%;
+            width: 100%;   
         }
         .detailBannerNum{
             position: absolute;

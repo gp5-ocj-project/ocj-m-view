@@ -1,0 +1,42 @@
+{
+  "Method": "",
+  "RspCode": 1,
+  "userId":"123456",
+  "RspData": {
+      "userCart": [
+          {
+              "goodsAmount": 1,
+              "goodsCode": "1333263",
+              "goodsId": "2ece7fd5-1249-49fa-8753-e5e433cf76b3",
+              "goodsName": "海南玉菇甜瓜1个900g以上/个",
+              "goodsPrice": 22.8000,
+              "goodsColor": "无",
+              "MaxLimitCount": 20,
+              "OriginalPrice": 22.8000,
+              "Selected": true,
+              "ShowOriginalPrice": false,
+              "SmallPic": "http://img12.yiguoimg.com/d/items/2017/171124/9288715633075064_300.jpg",
+              "State": 1
+          },
+          {
+            "goodsAmount": 1,
+            "goodsCode": "1335263",
+            "goodsId": "2ece7fd5-1249-49fa-8753-e5e433cf76b3",
+            "goodsName": "海南玉菇甜瓜1个900g以上/个",
+            "goodsPrice": 22.8000,
+            "goodsColor": "无",
+            "MaxLimitCount": 20,
+            "OriginalPrice": 22.8000,
+            "Selected": true,
+            "ShowOriginalPrice": false,
+            "SmallPic": "http://img12.yiguoimg.com/d/items/2017/171124/9288715633075064_300.jpg",
+            "State": 1
+        }
+      ],
+      "TotalInfo": {
+          "TotalCount": "6",
+          "TotalClassify":"3",
+          "sumAmount": "22.80"
+      }
+  }
+}

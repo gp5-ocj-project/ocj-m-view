@@ -3,6 +3,7 @@
     "/api/users/signup": "/signup",
     "/api/users/signin": "/signin",
     "/api/users/getcheckcode": "/checkcode",
+    "/api/users/cart": "/cart",
     "/api/goods/detail/123": "/detail"
 }
   

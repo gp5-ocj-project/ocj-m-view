@@ -10,11 +10,11 @@
             </div>	
 	    </div>
          <div class="regist-content">
-              <p><input type="text" v-mode="username" placeholder="请输入手机号"/></p>
+              <p><input type="text" v-model="username" placeholder="请输入手机号"/></p>
               <div class="input-code">
-                <p><input type="password"  v-mode="password" placeholder="请输入密码" /></p>
+                <p><input type="password"  v-model="password" placeholder="请输入密码" /></p>
               </div>
-              <div class="regist-agree"><input type="radio"/><span>同意</span>《东方购物网络使用条款》</div>
+              <div class="regist-agree"><input type="radio" checked/><span>同意</span>《东方购物网络使用条款》</div>
               <div class="regist-btn">
                   <mt-button type="primary" @click.prevent="checkAllInfo">立即注册</mt-button>
               </div>
@@ -25,6 +25,8 @@
 <script>
     import { Button,Toast } from 'mint-ui';
     import axios from 'axios';
+    import WebStorageCache from 'web-storage-cache';
+     let wsCache = new WebStorageCache();
     export default {
          data:() => {
             return {
@@ -45,15 +47,16 @@
 					username: this.username,
 					password: this.password,
                 }
-                axios.get('/api/users/signup',allInfo)
+                console.log(allInfo)
+                axios.post('/api/users/regist',allInfo)
 					.then(function( res){
+                        //console.log(res)
 						if(res.data.data.success){
 							Toast({
-								message:'注册成功！',
+								message:"注册成功",
 								duration: 2000
 							});
-							//将用户信息存到vuex
-							that.$store.commit('getUserInfo',res.data.data);
+                          that.$router.push({path: '/login'});
 						}else{
 							Toast({
 								message:'该用户已存在，请重新注册！',
@@ -92,7 +95,6 @@
             color: #5b5b5d;
             text-align: center;
             line-height: .44rem;
-            font-weight: 600;
             color:#707070;
             
         }

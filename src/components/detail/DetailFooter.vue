@@ -9,7 +9,7 @@
 			<span>收藏</span>
 		</div>
 		<div>
-			<span>
+			<span @click="addCart">
 			加入购物车
 			</span>
 			<span>
@@ -21,6 +21,35 @@
 </template>
 
 <script>
+    import { Toast } from 'mint-ui';
+    export default {
+        data: () => {
+            return {
+
+            }
+        },
+        methods: {
+            addCart() {
+                console.log(this.$store.userInfo)
+                let  checkToken = true;
+                if(checkToken){
+                     Toast({
+                        message:'加入购物车成功',
+                        duration: 1000
+                    });
+                    this.$router.push({path: '/cart/?userId=123456'});
+                }else{
+                     Toast({
+                        message:'请您先登陆！',
+                        duration: 1000
+                    });
+                    // console.log(this.$router.history.current.path);
+                   this.$store.commit('setCurrentPage',this.$router.history.current.path);
+                   this.$router.push({path: '/login'});
+                }
+            }
+        }
+    }
 </script>
 
 <style lang="scss" scoped>
