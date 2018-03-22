@@ -1,8 +1,8 @@
 <template>
 	<div class="good-list">
 		<ul>
-			<router-link tag="li" to="/detail" v-for="(v, i) in goodList" :key="i">
-				<div class="CommodityContent" >
+			<router-link tag="li" to="/detail" v-for="(v,i) in goodList" :key="i">
+				<div class="CommodityContent">
 					<div class="CommodityTip">
 						<div class="tipbox bgtv">
 							<div class="tiptitle">
